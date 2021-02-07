@@ -1,20 +1,21 @@
 import React from 'react';
 import SearchFormRedux from './SearchForm';
-import { getMoviesTC } from '../../redux/film-reducer';
-import { connect } from "react-redux";
+import {getMoviesTC} from '../../redux/film-reducer';
+import {connect} from "react-redux";
 
 const Search = (props) => {
 
-  const onSubmit = (searchValue) => {
-    props.getMoviesTC(searchValue);
-  }
+  const onSubmit = (formData) => {
+    props.getMoviesTC(formData.searchValue);
+    formData.searchValue = '';
+  };
 
   return (
     <div>
-      <SearchFormRedux onSubmit={onSubmit} />
+      <SearchFormRedux onSubmit={onSubmit}/>
     </div>
   )
-}
+};
 
 
-export default connect(null, { getMoviesTC })(Search);
+export default connect(null, {getMoviesTC})(Search);

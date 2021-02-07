@@ -46,13 +46,16 @@ export const searchMoviesSuccess = (payload) => ({
   payload
 });
 export const searchMoviesFailure = (error) => ({
-  type: SEARCH_MOVIES_SUCCESS,
+  type: SEARCH_MOVIES_FAILURE,
   error
 });
 
 export const getMoviesTC = (searchValue) => async (dispatch) => {
   let response = await filmsAPI.requestMoviesValueTitle(searchValue);
-  dispatch(searchMoviesSuccess(response));
+  if (response.Response === 'True') {
+    dispatch(searchMoviesSuccess(response));
+  }
+  ;
 };
 
 export default movieReducer;
