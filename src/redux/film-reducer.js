@@ -5,6 +5,7 @@ import {
 const SEARCH_MOVIES_REQUEST = 'SEARCH_MOVIES_REQUEST';
 const SEARCH_MOVIES_SUCCESS = 'SEARCH_MOVIES_SUCCESS';
 const SEARCH_MOVIES_FAILURE = 'SEARCH_MOVIES_FAILURE';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 
 const initialState = {
@@ -19,22 +20,29 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        errorMessage: null
+          errorMessage: null
       };
     case SEARCH_MOVIES_SUCCESS:
       return {
         ...state,
         loading: false,
-        movies: action.payload
+          movies: action.payload
       };
     case SEARCH_MOVIES_FAILURE:
       return {
         ...state,
         loading: false,
-        errorMessage: action.error
+          errorMessage: action.error
       };
-    default:
-      return state;
+    case TOGGLE_IS_FETCHING: {
+      return {
+        ...state,
+        isFetching: action.isFetching
+      }
+    };
+
+  default:
+    return state;
   }
 };
 
@@ -50,12 +58,24 @@ export const searchMoviesFailure = (error) => ({
   error
 });
 
+export const toggleIsFetching = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching
+});
+
+export const getMoviesStartTC = () => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  let response = await filmsAPI.requestMoviesStart();
+  dispatch(toggleIsFetching(false));
+  dispatch(searchMoviesSuccess(response.Search));
+}
+
+
 export const getMoviesTC = (searchValue) => async (dispatch) => {
   let response = await filmsAPI.requestMoviesValueTitle(searchValue);
   if (response.Response === 'True') {
     dispatch(searchMoviesSuccess(response));
-  }
-  ;
+  };
 };
 
 export default movieReducer;

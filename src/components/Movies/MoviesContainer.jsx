@@ -1,20 +1,27 @@
 import React from 'react';
 import Movies from "./Movies";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { getMoviesStartTC } from '../../redux/film-reducer';
 
-const MoviesContainer = ({movies}) => {
+class MoviesContainer extends React.Component {
 
-  return (
-    <div>
-      <Movies movies={movies}/>
-    </div>
-  )
-};
+  componentDidMount() {
+    this.props.getMoviesStartTC();
+  }
+
+  render() {
+    return (
+      <div>
+        <Movies {...this.props} />
+      </div>
+    )
+  };
+}
 
 const mapStateToProps = (state) => {
-  return (
-    {movies: state.movieReducer.movies.Search}
-  )
+  return {
+    movies: state.movieReducer.movies
+  }
 };
 
-export default connect(mapStateToProps)(MoviesContainer);
+export default connect(mapStateToProps, { getMoviesStartTC })(MoviesContainer);

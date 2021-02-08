@@ -12,5 +12,10 @@ export const filmsAPI = {
       return response.data;
     })
   },
+  requestMoviesStart() {
+    return axios.get(`http://www.omdbapi.com/?s=Hello&y=2015&apikey=c2d6036c`).then(response => {
+      return response.data;
+    })
+  },
 
 };
