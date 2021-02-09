@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchFormRedux from './SearchForm';
-import {getMoviesTC} from '../../redux/film-reducer';
+import {getMoviesSearchTC} from '../../redux/film-reducer';
 import {connect} from "react-redux";
 
 const Search = (props) => {
@@ -11,11 +11,11 @@ const Search = (props) => {
   };
 
   return (
-    <div>
+    <div className='search'>
       <SearchFormRedux onSubmit={onSubmit}/>
     </div>
   )
 };
 
 
-export default connect(null, {getMoviesTC})(Search);
+export default connect(null, {getMoviesTC: getMoviesSearchTC})(Search);

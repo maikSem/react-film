@@ -11,9 +11,9 @@ class MoviesContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <main>
         <Movies {...this.props} />
-      </div>
+      </main>
     )
   };
 }

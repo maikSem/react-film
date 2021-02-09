@@ -1,15 +1,15 @@
 import React from 'react';
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm} from 'redux-form';
 
 const SearchForm = (props) => {
   return (
-    <form action="#" onSubmit={props.handleSubmit}>
-      <div>
-        <Field component={'input'} type={'text'} name={'searchValue'}/>
+    <form action='#' onSubmit={props.handleSubmit} className='search-form'>
+      <div className='search-wrapper search-wrapper__input'>
+        <Field component={'input'} type={'text'} name={'searchValue'} className='search-item search-item__input'/>
       </div>
-      <div>
-        <button type={'submit'}>search</button>
-      </div>
+
+        <button className='button search-button' type={'submit'}>search</button>
+
     </form>
   )
 };

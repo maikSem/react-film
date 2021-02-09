@@ -1,17 +1,22 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
-const Movie = ({ movie }) => {
+const Movie = ({movie}) => {
 
   return (
-    <div>
-      <h3>{movie.Title}</h3>
+    <li className='movie-item'>
       <div>
-        <img src={movie.Poster} alt="" />
+        <NavLink to={'/movie/' + movie.imdbID}>
+          <h3 className='movie-title'>{movie.Title}</h3>
+          <div>
+            <img src={movie.Poster} alt=""/>
+          </div>
+          <div>
+            description
+          </div>
+        </NavLink>
       </div>
-      <div>
-        description
-      </div>
-    </div>
+    </li>
   )
 };
 

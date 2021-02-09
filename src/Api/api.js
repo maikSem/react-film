@@ -2,8 +2,8 @@ import * as axios from "axios";
 
 export const filmsAPI = {
 
-  requestMoviesValuehId(movieId) {
-    return axios.get(`http://www.omdbapi.com/?i=tt${movieId}&apikey=c2d6036c`).then(response => {
+  requestMoviesValueId(movieId) {
+    return axios.get(`http://www.omdbapi.com/?i=${movieId}&apikey=c2d6036c`).then(response => {
       return response.data;
     })
   },

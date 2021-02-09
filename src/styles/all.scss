@@ -1,0 +1,31 @@
+.app {
+  height: 100vh;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

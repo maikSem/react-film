@@ -1,0 +1,10 @@
+@import 'styles/all';
+@import 'styles/variables';
+@import 'components/Header/header';
+@import 'components/Movies/movies';
+@import 'components/Movies/Movie/movie';
+@import 'components/Search/search';
+
+.button {
+  cursor: pointer;
+}

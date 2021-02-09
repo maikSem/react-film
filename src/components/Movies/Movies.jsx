@@ -4,8 +4,8 @@ import Movie from "./Movie/Movie";
 const Movies = (props) => {
 
   return (
-    <ul>
-      {props.movies.map(m => <Movie movie={m} key={m.imdbID} />)}
+    <ul className='movie-list'>
+      {props.movies.map(m => <Movie movie={m} key={m.imdbID}/>)}
     </ul>
   )
 }
