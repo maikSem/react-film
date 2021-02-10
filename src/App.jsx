@@ -14,7 +14,7 @@ function App() {
       <div className='app-wrapper'>
         <Header text='CINEMA ROOM'/>
         <div>
-          <Route exact  path='/' render={() => <MoviesContainer/>} />
+          <Route exact path='/' render={() => <MoviesContainer/>}/>
           <Route path='/movie/:imdbID?' render={withSuspense(MovieProfileContainer)}/>
         </div>
       </div>
